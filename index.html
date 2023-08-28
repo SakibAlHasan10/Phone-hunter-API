@@ -14,9 +14,20 @@
 
     </header>
     <main>
-        <section>
-            <div id="card-container" class="grid grid-cols-3 ">
-                
+        <section class="max-w-screen-xl mx-auto px-8 py-8 my-6">
+            <input id="search-input" type="text" placeholder="Search..."
+                class="input input-bordered input-primary w-full max-w-xs" />
+            <button onclick="handelSearch() " id="search-btn" class="btn btn-primary ml-5">Search</button>
+        </section>
+        <section class="max-w-screen-xl mx-auto px-8 py-8 my-6">
+            <div id="loading-spinner" class="text-center my-40 hidden">
+                <span class="loading loading-spinner loading-lg"></span>
+            </div>
+            <div id="card-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 ">
+            </div>
+            <!-- load all card-->
+            <div class="mx-auto w-32 mt-10 hidden" id="load-all-button">
+                <button class="btn btn-neutral ">Load All</button>
             </div>
         </section>
     </main>
