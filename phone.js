@@ -8,6 +8,7 @@ const loadPhone = async (searchFiled, isAllShow) => {
   displayPhones(phones, isAllShow);
 };
 const displayPhones = (phones, isAllShow) => {
+  console.log(phones)
   const cardContainer = document.getElementById("card-container");
   // clear card container container before add new card
   cardContainer.textContent = "";
@@ -34,7 +35,7 @@ const displayPhones = (phones, isAllShow) => {
                 <h2 class="card-title">${phone.phone_name}</h2>
                 <p>If a dog chews shoes whose shoes does he choose?</p>
                 <div class="card-actions justify-center ">
-                    <button class="btn w-3/6 btn-primary mt-5">Buy Now</button>
+                    <button class="btn w-3/6 btn-primary mt-5" onclick="showMyModal('${phone.slug}')">Show Details</button>
                 </div>
             </div>
         `;
@@ -66,4 +67,14 @@ const toggleLodgingSpinner = (isLoading) =>{
 // load all
 const loadAllCard = () =>{
     handelSearch(true)
+}
+
+// show modal
+const showMyModal = async (id) =>{
+  console.log('modal', id)
+  // load individual data
+  const res = await fetch(`https://openapi.programming-hero.com/api/phone/${id}`);
+  const data = res.json();
+  console.log(data)
+  document.getElementById('my_modal_5', )
 }
