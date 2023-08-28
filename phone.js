@@ -6,7 +6,23 @@ const loadPhone = async (searchFiled, isAllShow) => {
   const phones = data.data;
   // console.log(phones)
   displayPhones(phones, isAllShow);
+  // console.log(phones)
+  noItems(phones)
 };
+
+// Now item show display
+const noItems = (items) =>{
+  const noItem = document.getElementById('no-item')
+  if(items.length===0){
+    noItem.classList.remove('hidden')
+  }else{
+    if(items.length > 0){
+    noItem.classList.add('hidden')
+
+    }
+  }
+}
+
 const displayPhones = (phones, isAllShow) => {
   // console.log(phones);
   const cardContainer = document.getElementById("card-container");
@@ -24,7 +40,7 @@ const displayPhones = (phones, isAllShow) => {
   }
 
   phones.forEach((phone) => {
-    console.log(phone)
+    // console.log(phone)
     const card = document.createElement("div");
     card.classList = `card p-6 bg-base-100 shadow-xl`;
     card.innerHTML = `
@@ -45,6 +61,7 @@ const displayPhones = (phones, isAllShow) => {
   toggleLodgingSpinner(false);
 };
 
+
 // show modal
 const showMyModal = async (id) => {
   // load individual data
@@ -64,15 +81,15 @@ const showModalDetails = (phone) => {
   <div class="bg-sky-100">
       <img src='${phone.image}' class="w-32 mx-auto py-6 rounded-xl mb-6 h-52 ">
   </div>
-  <h3 id="phone-name" class="font-bold text-2xl">${phone.name}</h3>
-  <p><span class="font-semibold text-xl">Stores:</span> ${phone?.mainFeatures?.storage}</p>
-  <p><span class="font-semibold text-lg">Display Size :</span> ${phone?.mainFeatures?.displaySize}</p>
-  <p><span class="font-semibold text-lg">Chipset :</span> ${phone?.mainFeatures?.chipSet}</p>
-  <p><span class="font-semibold text-lg">Memory :</span> ${phone?.mainFeatures?.memory}</p>
-  <p><span class="font-semibold text-lg">Slug :</span> ${phone?.slug}</p>
-  <p><span class="font-semibold text-lg">Release data :</span> ${phone?.releaseDate || 'no bailable'}</p>
-  <p><span class="font-semibold text-lg">Brand :</span> ${phone?.brand}</p>
-  <p><span class="font-semibold text-lg">GPS :</span> ${phone?.others?.GPS}</p>
+  <h3 id="phone-name" class="font-bold text-2xl">${phone?.name || 'not bailable'}</h3>
+  <p><span class="font-semibold text-xl">Stores:</span> ${phone?.mainFeatures?.storage || 'not bailable'}</p>
+  <p><span class="font-semibold text-lg">Display Size :</span> ${phone?.mainFeatures?.displaySize || 'not bailable'}</p>
+  <p><span class="font-semibold text-lg">Chipset :</span> ${phone?.mainFeatures?.chipSet || 'not bailable'}</p>
+  <p><span class="font-semibold text-lg">Memory :</span> ${phone?.mainFeatures?.memory || 'not bailable'}</p>
+  <p><span class="font-semibold text-lg">Slug :</span> ${phone?.slug || 'not bailable'}</p>
+  <p><span class="font-semibold text-lg">Release data :</span> ${phone?.releaseDate || 'not bailable'}</p>
+  <p><span class="font-semibold text-lg">Brand :</span> ${phone?.brand || 'not bailable'}</p>
+  <p><span class="font-semibold text-lg">GPS :</span> ${phone?.others?.GPS || 'not bailable'}</p>
   `
   console.log(phone)
   show_details_modal.showModal();
